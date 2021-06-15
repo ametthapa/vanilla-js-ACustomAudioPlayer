@@ -13,17 +13,32 @@ const cover = document.getElementById('cover');
 //song titles
 const songs = ["Life Doesn't Escape Us – Sapajou", "Maarif - Soyb & Amine Maxwell", "Middle Class (Instrumental) - RYYZN", "mn_music"  ];
 
+
 //keep track of songs
 let songIndex = 3;
 
+checkInitialSong();
+
+
 //initially load song details into DOM
-loadSong(songs[songIndex]);
+
 
 //Update song details
 function loadSong(song){
     title.innerText = song;
     audio.src =`music/${song}.ogg`;
     cover.src =`images/${song}.jpg`;
+    localStorage.setItem('songIndexS',songIndex);
+}
+
+function checkInitialSong(){
+    const currentSongIndex = localStorage.getItem('songIndexS');
+    console.log(currentSongIndex);
+    if (currentSongIndex !== null){
+        loadSong(songs[currentSongIndex]);
+    }else{
+        loadSong(songs[songIndex]);
+    }
 }
 
 //play song
@@ -34,7 +49,7 @@ function playSong(){
     audio.play();
 }
 
-//pausee song
+//pause song
 function pauseSong(){
     musicContainer.classList.remove('play');
     playBtn.querySelector('i.fas').classList.remove('fa-pause');
