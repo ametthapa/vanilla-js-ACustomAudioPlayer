@@ -75,18 +75,20 @@ body{
 
 .action-btn{
     background-color: #fff;
-    color: #dfdedf;
+    /* color: #dfdedf; */
     border: 0;
     padding: 10px;
     cursor: pointer;
     margin:0 20px;
     font-size: 20px;
+    z-index: 1;
 }
 
 .action-btn .action-btn-big{
     font-size: 45px;
     color: #cdc2d0;
 }
+
 
 .action-btn:focus{
     outline: 0;
